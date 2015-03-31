@@ -278,7 +278,7 @@
     </p>
   <p class="article-time">
     <time datetime="2015-03-29T03:15:33.000Z" itemprop="datePublished">Mar 29 2015</time>
-    更新日期:<time datetime="2015-03-31T03:35:18.060Z" itemprop="dateModified">Mar 31 2015</time>
+    更新日期:<time datetime="2015-03-31T06:12:45.239Z" itemprop="dateModified">Mar 31 2015</time>
     
   </p>
 </header>
@@ -292,6 +292,7 @@
 		
 		<p>gbdt<br><a id="more"></a><br> gbdt: gb+dt   gb 梯度下降  dt 决策树</p>
 <p> 训练：每次选择最优的分裂点，分割数据 ，预测值，达到树最大深度停止</p>
+<p>  $a = b + c$.</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -610,7 +611,37 @@ var _hmt = _hmt || [];
 </div>
 <script src="/js/scrolltop.js"></script>
 
-  </body>
+  <!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
 </html>
 
 
