@@ -1,0 +1,677 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>文本处理总结 | haidao&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="haidao">
+    
+    <meta name="description" content="吐槽 一直在做文本处理，但感觉做的很分散 没有系统，也没有发现特别好的关于NLP的书籍。如果有，请推荐。现在尝试着总结自己遇到的文本处理技术。
+ps:其实这个也不好分，很多东西都是交叉着使用。只是尝试着总结">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml## RSS address." title="haidao&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/pacman.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/fish_footer.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/fish_footer.jpg">
+    
+
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+    <!-- 标签云侵入样式 -->
+  <style>
+    .tagcloudlist {position:relative; height:300px;}
+    .tagcloudlist  a {position:absolute; top:0px; left:0px;  text-decoration:none; padding: 3px 6px; }
+    .tagcloudlist  a:hover {border: 1px solid #eee; background: #000; }
+    
+    .ac_results {
+            padding: 0px;
+            border: 1px solid black;
+            background-color: white;
+            overflow: hidden;
+            z-index: 99999;
+        }
+    .ac_results ul {
+        width: 100%;
+        list-style-position: outside;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .ac_results li {
+        margin: 0px;
+        padding: 2px 5px;
+        cursor: default;
+        display: block;
+        font: menu;
+        font-size: 12px;
+        line-height: 16px;
+        overflow: hidden;
+    }
+    .ac_loading {
+        background: #FFF;
+    }
+    .ac_odd {
+        background-color: #EEE;
+    }
+    .ac_over {
+        background-color: #AAA;
+        color: #FFF;
+    }
+
+  </style>
+
+    <script src="/js/jquery-2.1.0.min.js"></script>
+    <script src="/js/autocomplete.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/miaov.js"></script>
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/fish_font.jpg" alt="haidao&#39;s blog" title="haidao&#39;s blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="haidao&#39;s blog">haidao&#39;s blog</a></h1>
+				<h2 class="blog-motto">stay hungry, stay foolish</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/about">About Me</a></li>
+					
+					
+					<li> <a href="/atom.xml">RSS</a> </li>
+
+					<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+
+				<li>
+					
+					 <form id="searchform" class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+                    <label>Search</label>
+                    <input type="text" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
+               		 </form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/03/29/文本处理总结/" title="文本处理总结" itemprop="url">文本处理总结</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="" title="haidao">haidao</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2015-03-29T02:45:41.000Z" itemprop="datePublished">Mar 29 2015</time>
+    更新日期:<time datetime="2015-03-31T03:35:17.384Z" itemprop="dateModified">Mar 31 2015</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#吐槽"><span class="toc-number">1.</span> <span class="toc-text">吐槽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、简单文本处理工具"><span class="toc-number">2.</span> <span class="toc-text">1、简单文本处理工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、算法"><span class="toc-number">3.</span> <span class="toc-text">2、算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1_文本特征"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 文本特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2_文本核心基础"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 文本核心基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高阶算法（文本任务）"><span class="toc-number">3.3.</span> <span class="toc-text">高阶算法（文本任务）</span></a></li></ol></li></ol>
+		</div>
+		
+		<h2 id="吐槽">吐槽</h2><p> 一直在做文本处理，但感觉做的很分散 没有系统，也没有发现特别好的关于NLP的书籍。如果有，请推荐。<br>现在尝试着总结自己遇到的文本处理技术。</p>
+<p>ps:其实这个也不好分，很多东西都是交叉着使用。只是尝试着总结</p>
+<a id="more"></a>
+<h2 id="1、简单文本处理工具">1、简单文本处理工具</h2><ul>
+<li>linux 文本处理工具 awk sed  比较常用</li>
+</ul>
+<p>推荐两篇左耳朵耗子的博客。我很喜欢的大牛，还有幸和他聊了20分钟，O(∩_∩)O哈哈~<br><a href="http://coolshell.cn/articles/9070.html" target="_blank" rel="external">AWK 简明教程</a><br><a href="http://coolshell.cn/articles/9104.html" target="_blank" rel="external">sed 简明教程</a></p>
+<ul>
+<li>python 文本处理</li>
+</ul>
+<blockquote>
+<p>这个也是文本处理的常用工具，并且现在有很多文本算法工具都是用python写的 ，极力推荐。<br><a href="http://www.52nlp.cn/python-%E7%BD%91%E9%A1%B5%E7%88%AC%E8%99%AB-%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86-%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98" target="_blank" rel="external">Python 网页爬虫 &amp; 文本处理 &amp; 科学计算 &amp; 机器学习 &amp; 数据挖掘兵器谱</a><br><a href="http://www.nltk.org/book/" target="_blank" rel="external">Natural Language Processing with Python</a></p>
+</blockquote>
+<h2 id="2、算法">2、算法</h2><h3 id="2-1_文本特征">2.1 文本特征</h3><p>基本特征</p>
+<blockquote>
+<p>1、 词<br>2、  词频<br>3、 term weight:tf*idf  bm25 等等<br>4、 分类问题中 词的区分度，也就是交叉熵<br>5、 词性</p>
+</blockquote>
+<p>语义特征</p>
+<blockquote>
+<p>1、 核心词特征：产品词  情感词  品牌词<br>2、 主题特征：lda plsa<br>3、 word2vec 也是特征<br>4、 搜索中 短文本归一化 改写 等等：涉及到同义词 句型<br>5、 长尾特征</p>
+</blockquote>
+<h3 id="2-2_文本核心基础">2.2 文本核心基础</h3><blockquote>
+<ul>
+<li>分词<br>很基础 但非常重要的工具。可以使用最基本的前向后向切词，最大熵 ，crf条件随机场。<br>一般的小公司 <a href="https://github.com/NLPchina/ansj_seg" target="_blank" rel="external">推荐ansj_seg</a> ，性能好 易于使用，java写的 天然可以用在MR 中。</li>
+<li>语法树 分析</li>
+<li>pos 词性标注</li>
+<li>关键词分析<br><em>很多，诸如 tfidf，bm25 ,textrank, 品牌 产品词 属性词</em></li>
+<li>行业属性词提取 （）<br><em>比如淘宝评论的大家印象</em><br><em>比如情感分析</em></li>
+<li>新词发现<br>1、<a href="http://www.matrix67.com/blog/archives/5044" target="_blank" rel="external">互联网时代的社会语言学：基于SNS的文本数据挖掘</a>，名字很牛逼，其实就是新词发现。主要从左右熵 凝聚度来找<br>2、 query 搜索中去发现 </li>
+</ul>
+</blockquote>
+<h3 id="高阶算法（文本任务）">高阶算法（文本任务）</h3><ul>
+<li><p>文本分类</p>
+<pre><code>-<span class="ruby"> 朴素贝叶斯 <span class="constant">NB</span>
+</span>-<span class="ruby"> <span class="constant">SVM</span>
+</span>-<span class="ruby"> 最大熵</span>
+</code></pre><p>   一般来说NB能解决大部分问题，对于工业界，常用的也是效果最好的是NB+SVM ，对于比如邮件分类  评论的垃圾识别 效果非常好，基本能达到98% 左右，加上规则之类的很可能达到99%。</p>
+<p>   但是对于多分类，特别是类别很多，基本上就用NB+规则。还有一个利器就是最大熵，在一些应用上效果也非常不错，在78个类目中准确率达到96%。这还没有加文本的诸如词性  产品词之类的特征，加上之后效果会更好一点</p>
+</li>
+</ul>
+<ul>
+<li><p>分词  词性标注  属性分析<br>  hmm<br>  maxent<br>  最大熵马尔科夫<br>  crf </p>
+<p>  目前来说crf 效果最好</p>
+</li>
+<li><p>情感分析<br>其实这个也属于文本分类的范畴 ，单独提出来就是工业界需求巨大，比如分析微博 Twitter来了解用户的情感，然后做推荐或者做股市相关的东西，现在互联网金融这么火，很多都拿这个来忽悠投资。<br>情感分析低阶点 的就是 简单特征提取 ，然后用svm来分类。高阶点的其实也就是特征做的更好一点，比如情感词的提取  比如语法的分析。</p>
+</li>
+<li>主题分析<br>主题分析 就三种  LSA PLSA  LDA<br>LDA 推荐 企鹅家rickjin写的<a href="http://emma.memect.com/t/9756da9a47744de993d8df13a26e04e38286c9bc1c5a0d2b259c4564c6613298/LDA" target="_blank" rel="external">博客</a>，非常好</li>
+</ul>
+<ul>
+<li><p>learning to rank 解决文本问题<br>主要是使用搜索点击日志来分析title 词权重。这个在各大搜索公司都在使用。搜索日志是个好东西，能很容易的发现很多新趋势。<br>l2r 主要还是使用 svmrank 以及 gbdtrank。</p>
+</li>
+<li><p>知识图谱<br>这方面不熟。    有个很粗略的认识，从数据量巨大的web中抽取实体，然后挖掘实体间的关系。搜索提问时分析问题query的逻辑关系，经过简单推理（通过挖掘的关系），获取到最终的答案。     李亿超 有个3人小团队就做了个这样的创业项目，很厉害。</p>
+</li>
+</ul>
+<ul>
+<li>神经语言模型<br>这是现在的大趋势，为了避免花哨了我没有用Deep learning for NLP 这种title 。但无可否认 Deep learning 确实在NLP中发力了，如很火的CNN以及RNN ，现在只能说很容易的达到了state of art  ，但一直没有很惊艳的突破。<a href="http://www.flickering.cn/nlp/2015/03/%E6%88%91%E4%BB%AC%E6%98%AF%E8%BF%99%E6%A0%B7%E7%90%86%E8%A7%A3%E8%AF%AD%E8%A8%80%E7%9A%84-3%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/#jtss-tsina" target="_blank" rel="external">企鹅家的综述</a></li>
+</ul>
+<blockquote>
+<p><a href="http://code.google.com/p/word2vec/" target="_blank" rel="external">word2vec </a> word2vec的google group 也有很多很重要的信息，建议订阅<br>cnn 用于文本分类<br>rnn rnn_lsmt</p>
+</blockquote>
+<p>还有很多没写到的，以后再添加</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/machine-learning/">machine learning</a><a href="/tags/nlp/">nlp</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/machine-learning/">machine learning</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="/2015/03/29/文本处理总结/" data-title="文本处理总结 | haidao&#39;s blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="next" >
+ <a href="/2015/03/29/gbdt/" title="gbdt">
+  <strong>NEXT:</strong><br/>
+  <span>
+  gbdt</span>
+</a>
+</div>
+
+
+<div class="prev">
+<a href="/2015/03/29/hello-world/"  title="Hello World">
+ <strong>PREVIOUS:</strong><br/> 
+ <span>Hello World
+</span>
+</a>
+</div>
+
+</nav>
+
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2015/03/29/文本处理总结/" data-title="文本处理总结" data-url="/2015/03/29/文本处理总结/"></div>
+<!-- 多说评论框 end -->
+</div>  
+
+<script src="/js/snowstorm-min.js"></script>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"2","bdPos":"right","bdTop":"100"},"image":{"viewList":["weixin","qzone","tsina","tqq","renren"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["weixin","qzone","tsina","tqq","renren"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#吐槽"><span class="toc-number">1.</span> <span class="toc-text">吐槽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、简单文本处理工具"><span class="toc-number">2.</span> <span class="toc-text">1、简单文本处理工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、算法"><span class="toc-number">3.</span> <span class="toc-text">2、算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1_文本特征"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 文本特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2_文本核心基础"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 文本核心基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高阶算法（文本任务）"><span class="toc-number">3.3.</span> <span class="toc-text">高阶算法（文本任务）</span></a></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  <div>
+<script charset="Shift_JIS" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.js"></script>
+</div>
+
+
+  <div class="music">
+<p class="asidetitle">Music</p>
+<div class="music_player clearfix">
+<script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=45521081&sid=381307&mode=js"></script>
+</div>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Category</p>
+		<ul>
+		
+			<li><a href="/categories/machine-learning/" title="machine learning">machine learning<sup>3</sup></a></li>
+		
+			<li><a href="/categories/other/" title="other">other<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="categorieslist">
+<p class="asidetitle">Recent Posts</p>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/03/29/博客搭建/">博客搭建</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/29/算法/">算法</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/29/gbdt/">gbdt</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/29/文本处理总结/">文本处理总结</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/29/hello-world/">Hello World</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">Archives</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">5</span></li></ul>
+  </div>
+
+
+  
+
+  
+  <div class="tagcloudlist" >
+    <p class="asidetitle">Tagcloud</p>
+    <div class="tagcloudlist clearfix" >
+       <a href="/tags/machine-learning/" style="font-size: 20px;">machine learning</a><a href="/tags/nlp/" style="font-size: 15px;">nlp</a><a href="/tags/skills/" style="font-size: 10px;">skills</a>
+    </div>
+  </div>
+ 
+
+
+
+  <div class="linklist">
+<h3 rel="grow" class="grow asidetitle">Blogroll</h3>
+<ul class="entry">
+<li><a href="http://www.cnblogs.com/voidy/" title="voidy's Blog">小鱼</a></li>
+</ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2015 
+		
+		<a href="" target="_blank" title="haidao">haidao</a>
+		
+		</p>
+</div>
+</footer>
+    
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"haida"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?9723e4a6c94c2638d915c2747e92aef9";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<div id="totop" style="position:fixed;bottom:50px;right:50px;cursor: pointer;">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+<script src="/js/scrolltop.js"></script>
+
+  </body>
+</html>
+
+
+<a href="https://github.com/Voidly"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>

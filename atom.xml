@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[haidao's blog]]></title>
+  <subtitle><![CDATA[stay hungry, stay foolish]]></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="/"/>
+  <updated>2015-03-31T02:55:47.128Z</updated>
+  <id>/</id>
+  
+  <author>
+    <name><![CDATA[haidao]]></name>
+    <email><![CDATA[haidao2008@gmail.com]]></email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[博客搭建]]></title>
+    <link href="/2015/03/29/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    <id>/2015/03/29/博客搭建/</id>
+    <published>2015-03-29T13:23:22.000Z</published>
+    <updated>2015-03-31T02:55:47.128Z</updated>
+    <content type="html"><![CDATA[<p>Hexo 3.0 静态博客使用指南<br><a href="http://ippotsuko.com/build-your-hexo-blog-3/" target="_blank" rel="external">http://ippotsuko.com/build-your-hexo-blog-3/</a></p>
+<p>主题<br><a href="http://voidy.net/" target="_blank" rel="external">http://voidy.net/</a></p>
+<p><a href="https://github.com/Voidly/hexo_blog" target="_blank" rel="external">https://github.com/Voidly/hexo_blog</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Hexo 3.0 静态博客使用指南<br><a href="http://ippotsuko.com/build-your-hexo-blog-3/" target="_blank" rel="external">http://ippotsuko.com/build-you]]>
+    </summary>
+    
+      <category term="skills" scheme="/tags/skills/"/>
+    
+      <category term="other" scheme="/categories/other/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[算法]]></title>
+    <link href="/2015/03/29/%E7%AE%97%E6%B3%95/"/>
+    <id>/2015/03/29/算法/</id>
+    <published>2015-03-29T13:07:57.000Z</published>
+    <updated>2015-03-31T03:35:18.640Z</updated>
+    <content type="html"><![CDATA[<p>总结</p>
+<blockquote>
+<p>总结NLP 里使用到的算法<br><a href="http://www.cnblogs.com/549294286/archive/2013/06/06/3121761.html" target="_blank" rel="external">统计模型之间的比较，HMM，最大熵模型，CRF条件随机场</a>:<br>这篇文章总结的很好，把各种算法的优缺点都很好的进行了说明。</p>
+</blockquote>
+<h1 id="1、crf">1、crf</h1><p>目前来说 crf是标注里效果最好的，应用很广泛。包括 分词，实体识别，语法树等等</p>
+<p><img src="/blog/img/crf-f1.png" alt="此处输入图片的描述"><br>asgd crf 速度提高了10倍<br><a href="http://leon.bottou.org/projects/sgd" target="_blank" rel="external">http://leon.bottou.org/projects/sgd</a></p>
+<h1 id="2、maxent">2、maxent</h1><p>最大熵：满足已知条件最大熵的推测所有信息  最大熵：不偏不倚</p>
+<p>最大熵模型：满足已知的feature情况下，所有 p(y|x) 的期望符合都与已知的期望符合</p>
+<h1 id="3、最大熵马尔可夫模型">3、最大熵马尔可夫模型</h1><p><a href="Models%29http://www.zhizhihu.com/html/y2011/3489.html">MaxEnt: 最大熵模型(Maximum Entropy  坯子写的 挺好 基本的推导都有</a></p>
+<p>shenme qingkuang</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>总结</p>
+<blockquote>
+<p>总结NLP 里使用到的算法<br><a href="http://www.cnblogs.com/549294286/archive/2013/06/06/3121761.html" target="_blank" rel="e]]>
+    </summary>
+    
+      <category term="machine learning" scheme="/tags/machine-learning/"/>
+    
+      <category term="nlp" scheme="/tags/nlp/"/>
+    
+      <category term="machine learning" scheme="/categories/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[gbdt]]></title>
+    <link href="/2015/03/29/gbdt/"/>
+    <id>/2015/03/29/gbdt/</id>
+    <published>2015-03-29T03:15:33.000Z</published>
+    <updated>2015-03-31T03:35:18.060Z</updated>
+    <content type="html"><![CDATA[<p>gbdt<br><a id="more"></a><br> gbdt: gb+dt   gb 梯度下降  dt 决策树</p>
+<p> 训练：每次选择最优的分裂点，分割数据 ，预测值，达到树最大深度停止</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>gbdt<br>]]>
+    
+    </summary>
+    
+      <category term="machine learning" scheme="/tags/machine-learning/"/>
+    
+      <category term="machine learning" scheme="/categories/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[文本处理总结]]></title>
+    <link href="/2015/03/29/%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86%E6%80%BB%E7%BB%93/"/>
+    <id>/2015/03/29/文本处理总结/</id>
+    <published>2015-03-29T02:45:41.000Z</published>
+    <updated>2015-03-31T03:35:17.384Z</updated>
+    <content type="html"><![CDATA[<h2 id="吐槽">吐槽</h2><p> 一直在做文本处理，但感觉做的很分散 没有系统，也没有发现特别好的关于NLP的书籍。如果有，请推荐。<br>现在尝试着总结自己遇到的文本处理技术。</p>
+<p>ps:其实这个也不好分，很多东西都是交叉着使用。只是尝试着总结</p>
+<a id="more"></a>
+<h2 id="1、简单文本处理工具">1、简单文本处理工具</h2><ul>
+<li>linux 文本处理工具 awk sed  比较常用</li>
+</ul>
+<p>推荐两篇左耳朵耗子的博客。我很喜欢的大牛，还有幸和他聊了20分钟，O(∩_∩)O哈哈~<br><a href="http://coolshell.cn/articles/9070.html" target="_blank" rel="external">AWK 简明教程</a><br><a href="http://coolshell.cn/articles/9104.html" target="_blank" rel="external">sed 简明教程</a></p>
+<ul>
+<li>python 文本处理</li>
+</ul>
+<blockquote>
+<p>这个也是文本处理的常用工具，并且现在有很多文本算法工具都是用python写的 ，极力推荐。<br><a href="http://www.52nlp.cn/python-%E7%BD%91%E9%A1%B5%E7%88%AC%E8%99%AB-%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86-%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98" target="_blank" rel="external">Python 网页爬虫 &amp; 文本处理 &amp; 科学计算 &amp; 机器学习 &amp; 数据挖掘兵器谱</a><br><a href="http://www.nltk.org/book/" target="_blank" rel="external">Natural Language Processing with Python</a></p>
+</blockquote>
+<h2 id="2、算法">2、算法</h2><h3 id="2-1_文本特征">2.1 文本特征</h3><p>基本特征</p>
+<blockquote>
+<p>1、 词<br>2、  词频<br>3、 term weight:tf*idf  bm25 等等<br>4、 分类问题中 词的区分度，也就是交叉熵<br>5、 词性</p>
+</blockquote>
+<p>语义特征</p>
+<blockquote>
+<p>1、 核心词特征：产品词  情感词  品牌词<br>2、 主题特征：lda plsa<br>3、 word2vec 也是特征<br>4、 搜索中 短文本归一化 改写 等等：涉及到同义词 句型<br>5、 长尾特征</p>
+</blockquote>
+<h3 id="2-2_文本核心基础">2.2 文本核心基础</h3><blockquote>
+<ul>
+<li>分词<br>很基础 但非常重要的工具。可以使用最基本的前向后向切词，最大熵 ，crf条件随机场。<br>一般的小公司 <a href="https://github.com/NLPchina/ansj_seg" target="_blank" rel="external">推荐ansj_seg</a> ，性能好 易于使用，java写的 天然可以用在MR 中。</li>
+<li>语法树 分析</li>
+<li>pos 词性标注</li>
+<li>关键词分析<br><em>很多，诸如 tfidf，bm25 ,textrank, 品牌 产品词 属性词</em></li>
+<li>行业属性词提取 （）<br><em>比如淘宝评论的大家印象</em><br><em>比如情感分析</em></li>
+<li>新词发现<br>1、<a href="http://www.matrix67.com/blog/archives/5044" target="_blank" rel="external">互联网时代的社会语言学：基于SNS的文本数据挖掘</a>，名字很牛逼，其实就是新词发现。主要从左右熵 凝聚度来找<br>2、 query 搜索中去发现 </li>
+</ul>
+</blockquote>
+<h3 id="高阶算法（文本任务）">高阶算法（文本任务）</h3><ul>
+<li><p>文本分类</p>
+<pre><code>-<span class="ruby"> 朴素贝叶斯 <span class="constant">NB</span>
+</span>-<span class="ruby"> <span class="constant">SVM</span>
+</span>-<span class="ruby"> 最大熵</span>
+</code></pre><p>   一般来说NB能解决大部分问题，对于工业界，常用的也是效果最好的是NB+SVM ，对于比如邮件分类  评论的垃圾识别 效果非常好，基本能达到98% 左右，加上规则之类的很可能达到99%。</p>
+<p>   但是对于多分类，特别是类别很多，基本上就用NB+规则。还有一个利器就是最大熵，在一些应用上效果也非常不错，在78个类目中准确率达到96%。这还没有加文本的诸如词性  产品词之类的特征，加上之后效果会更好一点</p>
+</li>
+</ul>
+<ul>
+<li><p>分词  词性标注  属性分析<br>  hmm<br>  maxent<br>  最大熵马尔科夫<br>  crf </p>
+<p>  目前来说crf 效果最好</p>
+</li>
+<li><p>情感分析<br>其实这个也属于文本分类的范畴 ，单独提出来就是工业界需求巨大，比如分析微博 Twitter来了解用户的情感，然后做推荐或者做股市相关的东西，现在互联网金融这么火，很多都拿这个来忽悠投资。<br>情感分析低阶点 的就是 简单特征提取 ，然后用svm来分类。高阶点的其实也就是特征做的更好一点，比如情感词的提取  比如语法的分析。</p>
+</li>
+<li>主题分析<br>主题分析 就三种  LSA PLSA  LDA<br>LDA 推荐 企鹅家rickjin写的<a href="http://emma.memect.com/t/9756da9a47744de993d8df13a26e04e38286c9bc1c5a0d2b259c4564c6613298/LDA" target="_blank" rel="external">博客</a>，非常好</li>
+</ul>
+<ul>
+<li><p>learning to rank 解决文本问题<br>主要是使用搜索点击日志来分析title 词权重。这个在各大搜索公司都在使用。搜索日志是个好东西，能很容易的发现很多新趋势。<br>l2r 主要还是使用 svmrank 以及 gbdtrank。</p>
+</li>
+<li><p>知识图谱<br>这方面不熟。    有个很粗略的认识，从数据量巨大的web中抽取实体，然后挖掘实体间的关系。搜索提问时分析问题query的逻辑关系，经过简单推理（通过挖掘的关系），获取到最终的答案。     李亿超 有个3人小团队就做了个这样的创业项目，很厉害。</p>
+</li>
+</ul>
+<ul>
+<li>神经语言模型<br>这是现在的大趋势，为了避免花哨了我没有用Deep learning for NLP 这种title 。但无可否认 Deep learning 确实在NLP中发力了，如很火的CNN以及RNN ，现在只能说很容易的达到了state of art  ，但一直没有很惊艳的突破。<a href="http://www.flickering.cn/nlp/2015/03/%E6%88%91%E4%BB%AC%E6%98%AF%E8%BF%99%E6%A0%B7%E7%90%86%E8%A7%A3%E8%AF%AD%E8%A8%80%E7%9A%84-3%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/#jtss-tsina" target="_blank" rel="external">企鹅家的综述</a></li>
+</ul>
+<blockquote>
+<p><a href="http://code.google.com/p/word2vec/" target="_blank" rel="external">word2vec </a> word2vec的google group 也有很多很重要的信息，建议订阅<br>cnn 用于文本分类<br>rnn rnn_lsmt</p>
+</blockquote>
+<p>还有很多没写到的，以后再添加</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="吐槽">吐槽</h2><p> 一直在做文本处理，但感觉做的很分散 没有系统，也没有发现特别好的关于NLP的书籍。如果有，请推荐。<br>现在尝试着总结自己遇到的文本处理技术。</p>
+<p>ps:其实这个也不好分，很多东西都是交叉着使用。只是尝试着总结</p>]]>
+    
+    </summary>
+    
+      <category term="machine learning" scheme="/tags/machine-learning/"/>
+    
+      <category term="nlp" scheme="/tags/nlp/"/>
+    
+      <category term="machine learning" scheme="/categories/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <link href="/2015/03/29/hello-world/"/>
+    <id>/2015/03/29/hello-world/</id>
+    <published>2015-03-29T02:36:34.042Z</published>
+    <updated>2015-03-29T02:36:34.042Z</updated>
+    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io]]>
+    </summary>
+    
+  </entry>
+  
+</feed>
